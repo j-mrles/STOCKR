@@ -1,0 +1,122 @@
+.login-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 8rem);
+  background: radial-gradient(circle at top left, rgba(0, 255, 128, 0.12), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(0, 255, 128, 0.08), transparent 45%);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 2.5rem;
+  border-radius: 1.2rem;
+  background: rgba(8, 12, 14, 0.92);
+  border: 1px solid rgba(0, 255, 128, 0.18);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(16px);
+}
+
+.login-brand {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.brand-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  filter: drop-shadow(0 0 12px rgba(0, 255, 128, 0.45));
+}
+
+.login-brand h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  color: var(--color-accent);
+}
+
+.login-brand p {
+  color: var(--color-text-muted);
+  margin-top: 0.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.error-banner {
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 84, 112, 0.16);
+  border: 1px solid rgba(255, 106, 138, 0.4);
+  color: #ffb7c8;
+  font-size: 0.85rem;
+  letter-spacing: 0.04rem;
+  text-align: center;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.form-field input {
+  padding: 0.85rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(0, 255, 128, 0.25);
+  background: rgba(2, 4, 5, 0.92);
+  color: var(--color-text-primary);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-field input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(0, 255, 128, 0.15);
+}
+
+.form-field small {
+  color: #ff6a8a;
+  font-size: 0.75rem;
+  letter-spacing: 0.02rem;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.remember input[type='checkbox'] {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--color-accent);
+}
+
+button[type='submit'] {
+  margin-top: 0.5rem;
+  padding: 0.9rem 1rem;
+  border: none;
+  border-radius: 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08rem;
+  color: #04110a;
+  background: linear-gradient(135deg, rgba(0, 255, 128, 0.9), #00b869);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button[type='submit']:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px rgba(0, 255, 128, 0.25);
+}
+

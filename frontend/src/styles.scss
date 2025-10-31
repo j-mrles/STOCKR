@@ -1,0 +1,41 @@
+:root {
+  --color-background: #040607;
+  --color-surface: #080d0f;
+  --color-text-primary: #f5fff7;
+  --color-text-muted: rgba(255, 255, 255, 0.65);
+  --color-accent: #00ff80;
+  --font-family-base: 'Inter', 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-family-base);
+  background: radial-gradient(circle at top, rgba(0, 255, 128, 0.12), transparent 48%),
+      var(--color-background);
+  color: var(--color-text-primary);
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 128, 0.35);
+  border-radius: 999px;
+}
+

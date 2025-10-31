@@ -1,0 +1,18 @@
+<div class="app-shell">
+  <header class="app-header">
+    <div class="logo">STOCKR</div>
+    <nav class="nav-links">
+      <a
+        *ngFor="let link of links"
+        [routerLink]="link.path"
+        routerLinkActive="active"
+        >{{ link.label }}</a
+      >
+    </nav>
+  </header>
+  <main class="app-content">
+    <router-outlet />
+  </main>
+  <footer class="app-footer">Powering real-time sentiment intelligence</footer>
+</div>
+

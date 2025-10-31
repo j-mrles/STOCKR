@@ -1,0 +1,47 @@
+<section class="login-wrapper">
+  <div class="login-card">
+    <div class="login-brand">
+      <div class="brand-icon">📈</div>
+      <h1>Welcome to Stockr</h1>
+      <p>Sign in to unlock AI-driven market insights</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+      <div *ngIf="authError" class="error-banner" role="alert">{{ authError }}</div>
+
+      <label class="form-field">
+        <span>Username</span>
+        <input
+          type="text"
+          formControlName="username"
+          placeholder="jmrles"
+          autocomplete="username"
+        />
+        <small *ngIf="usernameControl?.invalid && usernameControl?.touched">
+          Username is required
+        </small>
+      </label>
+
+      <label class="form-field">
+        <span>Password</span>
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="••••••"
+          autocomplete="current-password"
+        />
+        <small *ngIf="passwordControl?.invalid && passwordControl?.touched">
+          Password must be at least 3 characters
+        </small>
+      </label>
+
+      <label class="remember">
+        <input type="checkbox" formControlName="rememberMe" />
+        <span>Remember this device</span>
+      </label>
+
+      <button type="submit">Enter Dashboard</button>
+    </form>
+  </div>
+</section>
+

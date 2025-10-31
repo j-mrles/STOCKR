@@ -1,0 +1,48 @@
+<section class="home-wrapper">
+  <header class="hero">
+    <div class="titles">
+      <h1>Realtime Sentiment Radar</h1>
+      <p>
+        Track the pulse of the market with AI-classified news streams, momentum indicators, and
+        actionable sentiment insights.
+      </p>
+    </div>
+    <button class="cta">Configure Watchlist</button>
+  </header>
+
+  <section class="stats-grid">
+    <article class="stat-card" *ngFor="let stat of highlightStats">
+      <span class="stat-label">{{ stat.label }}</span>
+      <span class="stat-value">{{ stat.value }}</span>
+      <span class="stat-meta">{{ stat.meta }}</span>
+    </article>
+  </section>
+
+  <section class="trend-section">
+    <h2>Watchlist Overview</h2>
+    <div class="trend-grid">
+      <article class="trend-card" *ngFor="let trend of trendSnapshots">
+        <div class="trend-header">
+          <span class="ticker">{{ trend.symbol }}</span>
+          <span class="sentiment" [style.color]="sentimentPalette[trend.sentiment]">
+            {{ trend.sentiment }}
+          </span>
+        </div>
+        <p class="company">{{ trend.company }}</p>
+        <div class="score">
+          <span class="score-value">{{ trend.score | number: '1.0-2' }}</span>
+          <span class="score-label">Sentiment score</span>
+        </div>
+        <div
+          class="change"
+          [class.positive]="trend.change24h >= 0"
+          [class.negative]="trend.change24h < 0"
+        >
+          <span>{{ trend.change24h >= 0 ? '+' : '' }}{{ trend.change24h | number: '1.0-1' }}%</span>
+          <small>vs last 24h</small>
+        </div>
+      </article>
+    </div>
+  </section>
+</section>
+
