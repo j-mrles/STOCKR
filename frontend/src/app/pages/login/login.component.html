@@ -38,7 +38,14 @@
         <span>Remember this device</span>
       </label>
 
-      <button type="submit">Enter Dashboard</button>
+      <button
+        type="submit"
+        [disabled]="isLoading"
+        [attr.aria-busy]="isLoading"
+      >
+        <ng-container *ngIf="!isLoading; else loadingTpl">Enter Dashboard</ng-container>
+      </button>
+      <ng-template #loadingTpl>Signing in...</ng-template>
     </form>
   </div>
 </section>

@@ -2,7 +2,38 @@
 
 This repository contains a tiny FastAPI application with a single health endpoint and a small pytest test.
 
-## Quick start — run the app
+## Quick start — Angular frontend & .NET backend
+
+Prerequisites:
+- Node.js 18+
+- .NET SDK 9.0+
+
+### 1. Start the backend (port 5100)
+
+```bash
+make run-backend
+```
+
+The API listens on `http://localhost:5100` with the sample login endpoint at `POST /api/auth/login` (credentials `admin` / `password123`). Leave this terminal running.
+
+### 2. Start the Angular frontend (port 4200)
+
+```bash
+make run-frontend
+```
+
+This target runs `npm install` if needed and launches the dev server at `http://localhost:4200`.
+
+### Handy supporting targets
+
+```bash
+make backend-restore     # dotnet restore for the API project
+make frontend-install    # npm install in the frontend directory
+```
+
+---
+
+## Quick start — FastAPI microservice
 
 Prerequisites:
 - Python 3.10+ installed

@@ -1,0 +1,6 @@
+@Stockr.Api_HostAddress = http://localhost:0
+
+GET {{Stockr.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

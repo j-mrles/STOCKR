@@ -115,8 +115,15 @@ button[type='submit'] {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-button[type='submit']:hover {
+button[type='submit']:not([disabled]):hover {
   transform: translateY(-2px);
   box-shadow: 0 16px 32px rgba(0, 255, 128, 0.25);
+}
+
+button[type='submit'][disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
