@@ -1,3 +1,70 @@
+# STOCKR — FastAPI microservice (minimal)
+
+This repository contains a tiny FastAPI application with a single health endpoint and a small pytest test.
+
+## Quick start — run the app
+
+Prerequisites:
+- Python 3.10+ installed
+
+1. Create a virtual environment:
+
+```bash
+python -m venv venv
+```
+
+2. Activate the virtual environment:
+
+```bash
+source venv/bin/activate
+```
+
+3. Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Run the development server (uvicorn):
+
+```bash
+uvicorn main:app --reload --host 127.0.0.1 --port 8000
+```
+
+The service will be available at http://127.0.0.1:8000. The health endpoint is at:
+
+```
+GET /health
+```
+
+Example:
+
+```bash
+curl -sS http://127.0.0.1:8000/health
+# Expected JSON: {"message": "AI Service is running"}
+```
+
+## Run tests
+
+This project includes a simple pytest test using FastAPI's TestClient.
+
+With the virtual environment activated and dependencies installed:
+
+```bash
+pytest -q
+```
+
+You should see output similar to:
+
+```
+1 passed in 0.4s
+```
+
+## Notes
+- `requirements.txt` includes `fastapi`, `uvicorn`, `pytest`, and `httpx` (httpx is required by the test client).
+- The `venv/` folder is ignored in `.gitignore`.
+
+If you'd like, I can add a simple GitHub Actions workflow to run the tests on push.
 # 📊 AI Stock Sentiment Dashboard
 
 ## 🧠 Overview
