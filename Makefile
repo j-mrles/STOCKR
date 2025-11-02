@@ -31,7 +31,7 @@ run: install
 	$(UVICORN) main:app --reload --host 127.0.0.1 --port 8000
 
 test: install
-	$(PYTEST) -q
+	$(PYTEST) -q ai_service/
 
 clean:
 	rm -rf $(VENV_DIR) __pycache__ .pytest_cache

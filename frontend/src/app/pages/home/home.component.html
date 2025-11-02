@@ -29,8 +29,9 @@
           </span>
         </div>
         <p class="company">{{ trend.company }}</p>
-        <div class="price" *ngIf="trend.currentPrice">
-          <span class="price-value">${{ trend.currentPrice | number: '1.2-2' }}</span>
+        <div class="price">
+          <span class="price-value" *ngIf="trend.currentPrice">${{ trend.currentPrice | number: '1.2-2' }}</span>
+          <span class="price-value" *ngIf="!trend.currentPrice">N/A</span>
         </div>
         <div class="score">
           <span class="score-value">{{ trend.score | number: '1.0-2' }}</span>

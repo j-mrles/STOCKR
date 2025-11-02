@@ -130,7 +130,9 @@ STOCKR/
 │       ├── Stockr.Domain/       # Domain models
 │       └── Stockr.Infrastructure/ # External services
 │
-├── main.py                      # Python AI service (placeholder)
+├── main.py                      # Python AI service (FastAPI)
+├── ai_service/                  # Python AI tests and utilities
+│   └── test_main.py            # Test suite for AI service
 ├── requirements.txt             # Python dependencies
 ├── Makefile                     # Build automation
 └── README.md
@@ -146,8 +148,9 @@ STOCKR/
 - Responsive dashboard UI
 - Modern dark theme
 - Swagger API documentation
-- **Real-time stock price quotes** (Web scraping with fallback)
+- **Real-time stock price quotes** (Python AI service → .NET backend → Angular frontend)
 - **Auto-refreshing watchlist** (15-second intervals)
+- **Full-stack integration** (Python BeautifulSoup → .NET API → Angular UI)
 
 ### 🔨 In Development
 - Real-time news aggregation
@@ -207,6 +210,22 @@ dotnet run --urls http://localhost:5100
 cd frontend
 ng serve
 ```
+
+### Python AI Service Development
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the AI service
+uvicorn main:app --reload --host 127.0.0.1 --port 8000
+
+# Run tests
+pytest ai_service/
+```
+
+**Python Endpoints:**
+- `GET /health` - Health check
+- `GET /stock/{symbol}` - Scrape stock price using BeautifulSoup
 
 ### Kill Port Conflicts
 If you get "address already in use" errors:

@@ -43,4 +43,3 @@
 /Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Api/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll
 /Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Api/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll
 /Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Api/obj/Debug/net9.0/Stockr.Api.xml
-/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Api/bin/Debug/net9.0/HtmlAgilityPack.dll
