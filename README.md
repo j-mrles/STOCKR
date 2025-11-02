@@ -16,6 +16,8 @@ make run-backend
 
 The API listens on `http://localhost:5100` with the sample login endpoint at `POST /api/auth/login` (credentials `admin` / `password123`). Leave this terminal running.
 
+**📚 Swagger UI**: The backend automatically launches Swagger UI at `http://localhost:5100/swagger` when running in development mode. Use it to explore the API endpoints, view request/response schemas, and test the authentication flow directly from your browser.
+
 ### 2. Start the Angular frontend (port 4200)
 
 ```bash

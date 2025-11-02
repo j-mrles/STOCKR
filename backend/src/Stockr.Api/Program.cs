@@ -7,6 +7,29 @@ const string CorsPolicyName = "AllowFrontend";
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "STOCKR API",
+        Version = "v1",
+        Description = "API for STOCKR - AI-powered sentiment analytics platform",
+        Contact = new Microsoft.OpenApi.Models.OpenApiContact
+        {
+            Name = "STOCKR Development Team"
+        }
+    });
+    
+    // Enable XML documentation
+    var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    if (File.Exists(xmlPath))
+    {
+        options.IncludeXmlComments(xmlPath);
+    }
+});
+
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure();
 builder.Services.AddCors(options =>
@@ -31,6 +54,8 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseCors(CorsPolicyName);

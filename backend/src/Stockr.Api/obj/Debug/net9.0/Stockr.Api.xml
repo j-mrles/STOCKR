@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Stockr.Api</name>
+    </assembly>
+    <members>
+        <member name="M:Stockr.Api.Controllers.AuthController.Login(Stockr.Api.Contracts.Auth.LoginRequest,System.Threading.CancellationToken)">
+            <summary>
+            Authenticates a user and returns a JWT token
+            </summary>
+            <param name="request">Login credentials</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>Authentication result with token</returns>
+        </member>
+    </members>
+</doc>
