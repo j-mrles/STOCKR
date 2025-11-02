@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { InjectionToken } from '@angular/core';\nexport const APP_CONFIG = new InjectionToken('app.config', {\n  providedIn: 'root',\n  factory: () => ({\n    apiUrl: 'http://localhost:5100'\n  })\n});","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

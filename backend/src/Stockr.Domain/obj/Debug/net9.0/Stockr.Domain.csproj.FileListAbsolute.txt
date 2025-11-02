@@ -1,0 +1,12 @@
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Domain/bin/Debug/net9.0/Stockr.Domain.deps.json
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Domain/bin/Debug/net9.0/Stockr.Domain.dll
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Domain/bin/Debug/net9.0/Stockr.Domain.pdb
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Domain/obj/Debug/net9.0/Stockr.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Domain/obj/Debug/net9.0/Stockr.Domain.AssemblyInfoInputs.cache
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Domain/obj/Debug/net9.0/Stockr.Domain.AssemblyInfo.cs
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Domain/obj/Debug/net9.0/Stockr.Domain.csproj.CoreCompileInputs.cache
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Domain/obj/Debug/net9.0/Stockr.Domain.sourcelink.json
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Domain/obj/Debug/net9.0/Stockr.Domain.dll
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Domain/obj/Debug/net9.0/refint/Stockr.Domain.dll
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Domain/obj/Debug/net9.0/Stockr.Domain.pdb
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Domain/obj/Debug/net9.0/ref/Stockr.Domain.dll

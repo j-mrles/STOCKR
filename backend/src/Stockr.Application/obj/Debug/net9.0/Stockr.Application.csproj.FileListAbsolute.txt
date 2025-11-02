@@ -1,0 +1,16 @@
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Application/obj/Debug/net9.0/Stockr.Application.csproj.AssemblyReference.cache
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Application/obj/Debug/net9.0/Stockr.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Application/obj/Debug/net9.0/Stockr.Application.AssemblyInfoInputs.cache
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Application/obj/Debug/net9.0/Stockr.Application.AssemblyInfo.cs
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Application/obj/Debug/net9.0/Stockr.Application.csproj.CoreCompileInputs.cache
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Application/obj/Debug/net9.0/Stockr.Application.sourcelink.json
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Application/bin/Debug/net9.0/Stockr.Application.deps.json
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Application/bin/Debug/net9.0/Stockr.Application.dll
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Application/bin/Debug/net9.0/Stockr.Application.pdb
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Application/bin/Debug/net9.0/Stockr.Domain.dll
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Application/bin/Debug/net9.0/Stockr.Domain.pdb
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Application/obj/Debug/net9.0/Stockr.A.931D91E9.Up2Date
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Application/obj/Debug/net9.0/Stockr.Application.dll
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Application/obj/Debug/net9.0/refint/Stockr.Application.dll
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Application/obj/Debug/net9.0/Stockr.Application.pdb
+/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Application/obj/Debug/net9.0/ref/Stockr.Application.dll

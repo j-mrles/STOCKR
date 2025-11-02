@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "Ns/lmlL5ZtilsmWmg+XOffw/BcaLzr0Q0Fjn/IwN5W8=",
+  "Source": "Stockr.Api",
+  "BasePath": "_content/Stockr.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

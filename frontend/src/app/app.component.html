@@ -3,11 +3,12 @@
     <div class="logo">STOCKR</div>
     <nav class="nav-links">
       <a
-        *ngFor="let link of links"
+        *ngFor="let link of links()"
         [routerLink]="link.path"
         routerLinkActive="active"
         >{{ link.label }}</a
       >
+      <button *ngIf="isAuthenticated()" class="logout-btn" (click)="logout()">Logout</button>
     </nav>
   </header>
   <main class="app-content">
@@ -15,4 +16,5 @@
   </main>
   <footer class="app-footer">Powering real-time sentiment intelligence</footer>
 </div>
+
 
