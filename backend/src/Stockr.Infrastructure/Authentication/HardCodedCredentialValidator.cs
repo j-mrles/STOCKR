@@ -7,8 +7,8 @@ namespace Stockr.Infrastructure.Authentication;
 
 public sealed class HardCodedCredentialValidator : IUserCredentialValidator
 {
-    private const string AllowedUsername = "admin";
-    private const string AllowedPassword = "password123";
+    private const string AllowedUsername = "jmrles";
+    private const string AllowedPassword = "123";
 
     public Task<bool> ValidateAsync(
         string username,

@@ -1,296 +1,234 @@
-# STOCKR — FastAPI microservice (minimal)
+# 📊 STOCKR — AI Stock Sentiment Dashboard
 
-This repository contains a tiny FastAPI application with a single health endpoint and a small pytest test.
-
-## Quick start — Angular frontend & .NET backend
-
-Prerequisites:
-- Node.js 18+
-- .NET SDK 9.0+
-
-### 1. Start the backend (port 5100)
-
-```bash
-make run-backend
-```
-
-The API listens on `http://localhost:5100` with the sample login endpoint at `POST /api/auth/login` (credentials `admin` / `password123`). Leave this terminal running.
-
-**📚 Swagger UI**: The backend automatically launches Swagger UI at `http://localhost:5100/swagger` when running in development mode. Use it to explore the API endpoints, view request/response schemas, and test the authentication flow directly from your browser.
-
-### 2. Start the Angular frontend (port 4200)
-
-```bash
-make run-frontend
-```
-
-This target runs `npm install` if needed and launches the dev server at `http://localhost:4200`.
-
-### Handy supporting targets
-
-```bash
-make backend-restore     # dotnet restore for the API project
-make frontend-install    # npm install in the frontend directory
-```
-
----
-
-## Quick start — FastAPI microservice
-
-Prerequisites:
-- Python 3.10+ installed
-
-1. Create a virtual environment:
-
-```bash
-python -m venv venv
-```
-
-2. Activate the virtual environment:
-
-```bash
-source venv/bin/activate
-```
-
-3. Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-4. Run the development server (uvicorn):
-
-```bash
-uvicorn main:app --reload --host 127.0.0.1 --port 8000
-```
-
-The service will be available at http://127.0.0.1:8000. The health endpoint is at:
-
-```
-GET /health
-```
-
-Example:
-
-```bash
-curl -sS http://127.0.0.1:8000/health
-# Expected JSON: {"message": "AI Service is running"}
-```
-
-## Run tests
-
-This project includes a simple pytest test using FastAPI's TestClient.
-
-With the virtual environment activated and dependencies installed:
-
-```bash
-pytest -q
-```
-
-You should see output similar to:
-
-```
-1 passed in 0.4s
-```
-
-## Notes
-- `requirements.txt` includes `fastapi`, `uvicorn`, `pytest`, and `httpx` (httpx is required by the test client).
-- The `venv/` folder is ignored in `.gitignore`.
-
-If you'd like, I can add a simple GitHub Actions workflow to run the tests on push.
-# 📊 AI Stock Sentiment Dashboard
+An intelligent full-stack application that displays real-time stock news and provides AI-driven sentiment analysis for actionable market insights.
 
 ## 🧠 Overview
 
-The **AI Stock Sentiment Dashboard** is a full-stack application designed to display **real-time stock news** and provide **AI-driven sentiment analysis** (positive vs. negative vs. neutral) for the last 24 hours.
-The dashboard begins with **NVIDIA (NVDA)** as the default tracked stock but allows users to dynamically select and monitor other stocks.
-
-The app integrates **Angular (frontend)**, **.NET (backend)**, and **Python (AI microservice)** to deliver an intelligent, real-time market insight platform.
+STOCKR is a microservices-based platform that aggregates stock news from multiple sources, analyzes sentiment using AI/ML models, and presents the results through an intuitive dashboard. The system integrates **Angular 17** (frontend), **ASP.NET Core** (backend), and **Python FastAPI** (AI microservice) to deliver real-time market intelligence.
 
 ---
 
 ## ⚙️ Tech Stack
 
-### **Frontend (Client)**
+### Frontend
+- **Framework:** Angular 17 (standalone components)
+- **Styling:** SCSS with CSS variables
+- **Language:** TypeScript
+- **State Management:** Signals
+- **HTTP Client:** Angular HttpClient
 
-* **Framework:** Angular 17
-* **UI Library:** Angular Material
-* **Language:** TypeScript
-* **Features:**
+### Backend
+- **Framework:** ASP.NET Core 9 (C#)
+- **Architecture:** Clean Architecture with CQRS
+- **API Documentation:** Swagger/OpenAPI
+- **Authentication:** JWT-based auth
+- **Pattern:** Repository pattern with dependency injection
 
-  * Interactive stock search and selection
-  * Real-time news display and sentiment visualization
-  * Graphs and charts to show sentiment breakdowns over time
-  * REST API integration with .NET backend
-
-### **Backend (API Server)**
-
-* **Framework:** ASP.NET Core 8 (C#)
-* **Architecture:** RESTful API
-* **Responsibilities:**
-
-  * Manages API routes for frontend requests
-  * Handles authentication (if needed)
-  * Fetches and caches stock news data from external APIs
-  * Communicates with Python AI service for sentiment analysis
-  * Stores recent analyses and logs in a local database (SQL Server / SQLite)
-
-### **AI Microservice (Sentiment Engine)**
-
-* **Language:** Python 3.11+
-* **Framework:** FastAPI
-* **Libraries:**
-
-  * `transformers` (for text classification models)
-  * `requests`
-  * `pandas`
-  * `numpy`
-* **Responsibilities:**
-
-  * Processes incoming news data from .NET
-  * Uses pretrained NLP models to determine sentiment (positive/negative/neutral)
-  * Returns sentiment results and confidence scores back to the .NET API
+### AI Microservice (Planned)
+- **Language:** Python 3.11+
+- **Framework:** FastAPI
+- **ML Libraries:** transformers, pandas, numpy
+- **Purpose:** NLP sentiment analysis
 
 ---
 
-## 📎 Architecture Overview
+## 📎 Architecture
 
 ```
-Angular (Frontend)
-   │
-   ▼
-.NET API (Backend)
-   │
-   ▼
-Python FastAPI (AI Sentiment Microservice)
-   │
-   ▼
-External News APIs (e.g., NewsAPI, FinancialModelingPrep)
+┌─────────────────┐
+│  Angular (FE)   │  Port 4200
+│   Standalone    │
+└────────┬────────┘
+         │ HTTPS
+         ▼
+┌─────────────────┐
+│  ASP.NET (BE)   │  Port 5100
+│   CQRS + DI     │  Swagger UI
+└────────┬────────┘
+         │ REST
+         ▼
+┌─────────────────┐
+│  Python AI      │  Port 8000 (planned)
+│   FastAPI       │
+└────────┬────────┘
+         │ HTTP
+         ▼
+┌─────────────────┐
+│  News APIs      │
+│  External       │
+└─────────────────┘
 ```
 
 ---
 
-## 🚀 Key Features
+## 🚀 Quick Start
 
-1. **Stock Search & Selection**
+### Prerequisites
+- **Node.js** 18+
+- **.NET SDK** 9.0+
 
-   * Start with NVIDIA (NVDA)
-   * Expandable to any stock symbol using dynamic input
-
-2. **Real-Time News Feed**
-
-   * Displays top articles from the last 24 hours
-   * Automatically refreshes periodically
-
-3. **AI Sentiment Analysis**
-
-   * Analyzes the tone of each article using Python NLP models
-   * Returns a sentiment score (Positive %, Negative %, Neutral %)
-
-4. **Data Visualization**
-
-   * Interactive charts using Angular Material or Chart.js
-   * Sentiment trend graphs and overall stock sentiment index
-
-5. **Expandable AI Capabilities**
-
-   * Future additions:
-
-     * Topic categorization (e.g., earnings, product launches)
-     * Predictive stock sentiment modeling
-     * AI summary of overall sentiment impact
-
----
-
-## 🧠 Example Workflow
-
-1. User opens the dashboard → defaults to NVIDIA.
-2. Angular app sends a request to `.NET API` → `/api/news/nvda`.
-3. `.NET API` fetches data from a **news provider** (e.g., NewsAPI.org).
-4. `.NET API` sends article headlines and descriptions to the **Python AI microservice**.
-5. **Python service** returns sentiment classifications with confidence scores.
-6. `.NET API` aggregates and sends formatted results to **Angular**.
-7. Angular visualizes the results in charts and sentiment summaries.
-
----
-
-## 🧩 Repository Structure
-
-You’ll have **three separate repositories** (or subfolders in a monorepo):
-
-1. **frontend/** → Angular application
-2. **backend/** → .NET Core REST API
-3. **ai-service/** → Python FastAPI microservice
-
-```
-ai-stock-sentiment-dashboard/
-│
-├── frontend/          # Angular app (UI)
-│
-├── backend/           # .NET API (business logic, routes)
-│
-└── ai-service/        # Python AI microservice (sentiment model)
-```
-
----
-
-## 🧮‍♂️ Setup & Run Locally
-
-### 1️⃣ Clone All Repos
+### 1️⃣ Start the Backend
 
 ```bash
-git clone https://github.com/<your-username>/ai-stock-dashboard-frontend.git
-git clone https://github.com/<your-username>/ai-stock-dashboard-backend.git
-git clone https://github.com/<your-username>/ai-stock-dashboard-ai-service.git
+make run-backend
 ```
 
-### 2️⃣ Run the AI Microservice (Python)
+**API Running:** `http://localhost:5100`
+
+**Swagger UI:** `http://localhost:5100/swagger`
+
+**Test Login:** `POST /api/auth/login`
+- Username: `jmrles`
+- Password: `123`
+
+### 2️⃣ Start the Frontend
 
 ```bash
-cd ai-service
-pip install -r requirements.txt
-uvicorn main:app --reload
+make run-frontend
 ```
 
-### 3️⃣ Run the .NET API
+**Dashboard:** `http://localhost:4200`
 
+### Supporting Commands
+
+```bash
+make backend-restore      # Restore .NET dependencies
+make frontend-install     # Install npm packages
+```
+
+---
+
+## 🗂️ Repository Structure
+
+```
+STOCKR/
+├── frontend/                    # Angular application
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── pages/          # Feature pages
+│   │   │   │   ├── home/
+│   │   │   │   └── login/
+│   │   │   ├── core/           # Core services
+│   │   │   │   ├── auth/       # Auth service & guard
+│   │   │   │   └── config/     # App configuration
+│   │   │   ├── app.component.*
+│   │   │   └── app.routes.ts
+│   │   ├── assets/
+│   │   └── index.html
+│   ├── angular.json
+│   └── package.json
+│
+├── backend/                     # .NET API
+│   └── src/
+│       ├── Stockr.Api/          # API layer
+│       │   ├── Controllers/
+│       │   ├── Contracts/
+│       │   └── Program.cs
+│       ├── Stockr.Application/  # Business logic
+│       │   ├── Auth/
+│       │   └── Common/
+│       ├── Stockr.Domain/       # Domain models
+│       └── Stockr.Infrastructure/ # External services
+│
+├── main.py                      # Python AI service (placeholder)
+├── requirements.txt             # Python dependencies
+├── Makefile                     # Build automation
+└── README.md
+```
+
+---
+
+## 🔑 Key Features
+
+### ✅ Implemented
+- User authentication with JWT
+- Protected routes with auth guard
+- Responsive dashboard UI
+- Modern dark theme
+- Swagger API documentation
+
+### 🔨 In Development
+- Real-time news aggregation
+- AI sentiment analysis
+- Stock watchlist management
+- Sentiment visualization charts
+- Multi-stock comparison
+
+### 🔮 Future Enhancements
+- Topic categorization (earnings, product launches)
+- Predictive sentiment modeling
+- Export reports as PDF
+- News source reliability scoring
+- Push notifications for sentiment changes
+
+---
+
+## 🧪 Testing
+
+### Backend Tests
 ```bash
 cd backend
-dotnet restore
-dotnet run
+dotnet test
 ```
 
-### 4️⃣ Run the Angular Frontend
-
+### Frontend Tests
 ```bash
 cd frontend
-npm install
+npm test
+```
+
+---
+
+## 📝 API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/auth/login` | Authenticate user |
+| GET | `/swagger` | API documentation |
+
+More endpoints coming soon...
+
+---
+
+## 🔧 Development
+
+### Backend Development
+```bash
+cd backend/src/Stockr.Api
+dotnet run --urls http://localhost:5100
+```
+
+### Frontend Development
+```bash
+cd frontend
 ng serve
 ```
 
-### 5️⃣ Access the App
-
-Visit: `http://localhost:4200`
-
----
-
-## 🔮 Future Enhancements
-
-* Multi-stock sentiment comparison dashboard
-* User authentication and saved watchlists
-* Predictive modeling for stock sentiment trends
-* News source reliability scoring
-* Export sentiment reports as PDF
+### Kill Port Conflicts
+If you get "address already in use" errors:
+```bash
+lsof -ti:5100 | xargs kill -9  # Backend
+lsof -ti:4200 | xargs kill -9  # Frontend
+```
 
 ---
 
 ## 🧑‍💻 Contributors
 
-**Javier Morales** — Software Engineer
-*(Frontend: Angular, Backend: .NET, AI: Python FastAPI)*
+**Javier Morales** — Software Engineer  
+*Frontend: Angular • Backend: ASP.NET Core • AI: Python*
 
 ---
 
 ## 📄 License
 
 This project is open-source under the MIT License.
+
+---
+
+## 📚 Additional Resources
+
+- [Angular Documentation](https://angular.io/docs)
+- [.NET Documentation](https://learn.microsoft.com/en-us/dotnet/)
+- [Swagger/OpenAPI](https://swagger.io/docs/)
+- [FastAPI](https://fastapi.tiangolo.com/)
