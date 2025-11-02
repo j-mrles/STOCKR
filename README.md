@@ -146,6 +146,8 @@ STOCKR/
 - Responsive dashboard UI
 - Modern dark theme
 - Swagger API documentation
+- **Real-time stock price quotes** (Web scraping with fallback)
+- **Auto-refreshing watchlist** (15-second intervals)
 
 ### 🔨 In Development
 - Real-time news aggregation
@@ -185,6 +187,8 @@ npm test
 |--------|----------|-------------|
 | POST | `/api/auth/login` | Authenticate user |
 | GET | `/swagger` | API documentation |
+| GET | `/api/stock/{symbol}` | Get real-time quote for single stock |
+| GET | `/api/stock/multiple?symbols=AAPL,NVDA` | Get real-time quotes for multiple stocks |
 
 More endpoints coming soon...
 

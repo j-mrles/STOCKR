@@ -123,6 +123,18 @@
   color: var(--color-text-muted);
 }
 
+.price {
+  display: flex;
+  flex-direction: column;
+}
+
+.price-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  letter-spacing: 0.02rem;
+}
+
 .score {
   display: flex;
   flex-direction: column;

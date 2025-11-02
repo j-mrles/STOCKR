@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Stockr.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dc6405ff1d10e18936a326afa574852e663ec14c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3de7e0201c3b7a6c17500152b0b21cee8d0b3cb9")]
 [assembly: System.Reflection.AssemblyProductAttribute("Stockr.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Stockr.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

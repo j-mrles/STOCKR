@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { interval, Subscription } from 'rxjs';
+import { StockService } from '../../core/stocks/stock.service';
 
 interface TrendSnapshot {
   symbol: string;
@@ -7,6 +9,8 @@ interface TrendSnapshot {
   sentiment: 'Bullish' | 'Neutral' | 'Bearish';
   score: number;
   change24h: number;
+  currentPrice?: number;
+  priceChangePercent?: number;
 }
 
 @Component({
@@ -17,7 +21,10 @@ interface TrendSnapshot {
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit, OnDestroy {
+  private readonly stockService = inject(StockService);
+  private refreshSubscription?: Subscription;
+  
   readonly sentimentPalette: Record<TrendSnapshot['sentiment'], string> = {
     Bullish: 'var(--color-accent)',
     Neutral: '#bfbfbf',
@@ -30,7 +37,7 @@ export class HomeComponent {
     { label: 'AI Confidence', value: '91%', meta: 'Weighted ensemble score' }
   ];
 
-  readonly trendSnapshots: TrendSnapshot[] = [
+  readonly trendSnapshots = signal<TrendSnapshot[]>([
     {
       symbol: 'NVDA',
       company: 'NVIDIA Corp.',
@@ -59,7 +66,45 @@ export class HomeComponent {
       score: 0.38,
       change24h: -3.4
     }
-  ];
+  ]);
+
+  ngOnInit(): void {
+    // Fetch real-time prices for all stocks in watchlist
+    this.loadStockPrices();
+    
+    // Refresh prices every 15 seconds
+    this.refreshSubscription = interval(15000).subscribe(() => {
+      this.loadStockPrices();
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.refreshSubscription?.unsubscribe();
+  }
+
+  private loadStockPrices(): void {
+    const symbols = this.trendSnapshots().map(t => t.symbol);
+    
+    this.stockService.getMultipleQuotes(symbols).subscribe({
+      next: (prices) => {
+        const updatedSnapshots = this.trendSnapshots().map(snapshot => {
+          const price = prices.find(p => p.symbol === snapshot.symbol);
+          if (price) {
+            return {
+              ...snapshot,
+              currentPrice: price.currentPrice,
+              priceChangePercent: ((price.currentPrice - price.previousClose) / price.previousClose) * 100
+            };
+          }
+          return snapshot;
+        });
+        this.trendSnapshots.set(updatedSnapshots);
+      },
+      error: (err) => {
+        console.error('Failed to load stock prices:', err);
+      }
+    });
+  }
 }
 
 

@@ -12,5 +12,21 @@
             <param name="cancellationToken">Cancellation token</param>
             <returns>Authentication result with token</returns>
         </member>
+        <member name="M:Stockr.Api.Controllers.StockController.GetQuote(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets real-time quote for a single stock symbol
+            </summary>
+            <param name="symbol">Stock symbol (e.g., AAPL, NVDA)</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>Stock price information</returns>
+        </member>
+        <member name="M:Stockr.Api.Controllers.StockController.GetMultipleQuotes(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets real-time quotes for multiple stock symbols
+            </summary>
+            <param name="symbols">Comma-separated stock symbols (e.g., AAPL,NVDA,TSLA)</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>List of stock price information</returns>
+        </member>
     </members>
 </doc>

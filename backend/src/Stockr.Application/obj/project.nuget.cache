@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "gIHVm5zqmGM=",
+  "dgSpecHash": "QORV4ZncYjA=",
   "success": true,
   "projectFilePath": "/Users/j.mrles/DEV/STOCKR/backend/src/Stockr.Application/Stockr.Application.csproj",
   "expectedPackageFiles": [
-    "/Users/j.mrles/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.1/microsoft.extensions.dependencyinjection.abstractions.8.0.1.nupkg.sha512"
+    "/Users/j.mrles/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.0/microsoft.extensions.dependencyinjection.abstractions.9.0.0.nupkg.sha512"
   ],
   "logs": []
 }
