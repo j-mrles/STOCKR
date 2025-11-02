@@ -64,7 +64,7 @@ export class LoginComponent {
       );
 
       if (response.isAuthenticated) {
-        this.persistToken(response.token, rememberMe);
+        this.authService.setToken(response.token, rememberMe);
         await this.router.navigate(['/home']);
         return;
       }
@@ -75,24 +75,6 @@ export class LoginComponent {
     } finally {
       this.isLoading = false;
       this.cdr.markForCheck();
-    }
-  }
-
-  private persistToken(token: string | null, remember: boolean): void {
-    const storageKey = 'stockr_token';
-
-    if (!token) {
-      localStorage.removeItem(storageKey);
-      sessionStorage.removeItem(storageKey);
-      return;
-    }
-
-    if (remember) {
-      localStorage.setItem(storageKey, token);
-      sessionStorage.removeItem(storageKey);
-    } else {
-      sessionStorage.setItem(storageKey, token);
-      localStorage.removeItem(storageKey);
     }
   }
 }
