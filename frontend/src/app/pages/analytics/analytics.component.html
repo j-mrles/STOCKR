@@ -1,0 +1,16 @@
+<section class="analytics-wrapper">
+  <header class="page-header">
+    <h1>Analytics Dashboard</h1>
+    <p>Deep insights into market sentiment and trends</p>
+  </header>
+
+  <section class="features-grid">
+    <article class="feature-card" *ngFor="let feature of features">
+      <div class="feature-icon">{{ feature.icon }}</div>
+      <h3>{{ feature.title }}</h3>
+      <p>{{ feature.description }}</p>
+      <div class="coming-soon">Coming Soon</div>
+    </article>
+  </section>
+</section>
+

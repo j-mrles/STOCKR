@@ -1,0 +1,16 @@
+<section class="portfolio-wrapper">
+  <header class="page-header">
+    <h1>Portfolio</h1>
+    <p>Manage your investments and track performance</p>
+  </header>
+
+  <section class="sections-grid">
+    <article class="section-card" *ngFor="let section of sections">
+      <div class="section-icon">{{ section.icon }}</div>
+      <h3>{{ section.title }}</h3>
+      <p>{{ section.description }}</p>
+      <div class="coming-soon">Coming Soon</div>
+    </article>
+  </section>
+</section>
+

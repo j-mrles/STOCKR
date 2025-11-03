@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Stockr.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+281e8550f6908c6c2cbf71ef6bef06dcadbe5132")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f4516d0c8280aeb5e243ae359482d0d31d7cdb31")]
 [assembly: System.Reflection.AssemblyProductAttribute("Stockr.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Stockr.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

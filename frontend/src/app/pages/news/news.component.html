@@ -1,0 +1,16 @@
+<section class="news-wrapper">
+  <header class="page-header">
+    <h1>News & Insights</h1>
+    <p>Stay informed with real-time market intelligence</p>
+  </header>
+
+  <section class="categories-grid">
+    <article class="category-card" *ngFor="let category of categories">
+      <div class="category-icon">{{ category.icon }}</div>
+      <h3>{{ category.title }}</h3>
+      <p>{{ category.description }}</p>
+      <div class="coming-soon">Coming Soon</div>
+    </article>
+  </section>
+</section>
+
