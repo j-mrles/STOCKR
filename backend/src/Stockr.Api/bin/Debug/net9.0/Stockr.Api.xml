@@ -12,6 +12,14 @@
             <param name="cancellationToken">Cancellation token</param>
             <returns>Authentication result with token</returns>
         </member>
+        <member name="M:Stockr.Api.Controllers.NewsController.GetLatestNews(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Gets latest financial news articles
+            </summary>
+            <param name="limit">Maximum number of articles to return (default: 20)</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>List of news articles</returns>
+        </member>
         <member name="M:Stockr.Api.Controllers.StockController.GetQuote(System.String,System.Threading.CancellationToken)">
             <summary>
             Gets real-time quote for a single stock symbol

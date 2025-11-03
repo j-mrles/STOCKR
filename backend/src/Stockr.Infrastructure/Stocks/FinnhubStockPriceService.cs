@@ -41,6 +41,29 @@ public class FinnhubStockPriceService : IStockPriceService
     {
         try
         {
+            // Try MarketStack API first for more complete data
+            var marketstackResponse = await _httpClient.GetFromJsonAsync<MarketStackResponse>(
+                $"{_pythonServiceUrl}/stock-marketstack/{symbol}",
+                cancellationToken: default);
+
+            if (marketstackResponse != null && marketstackResponse.Status == "success" && marketstackResponse.Price.HasValue)
+            {
+                // Calculate previous close (could be improved with actual previous day data)
+                var previousClose = marketstackResponse.Price.Value;
+
+                return new StockPriceDto(
+                    Symbol: symbol,
+                    CurrentPrice: marketstackResponse.Price.Value,
+                    OpenPrice: marketstackResponse.Open ?? marketstackResponse.Price.Value,
+                    HighPrice: marketstackResponse.High ?? marketstackResponse.Price.Value,
+                    LowPrice: marketstackResponse.Low ?? marketstackResponse.Price.Value,
+                    PreviousClose: previousClose,
+                    Volume: marketstackResponse.Volume.HasValue ? (long)marketstackResponse.Volume.Value : 0,
+                    Timestamp: DateTimeOffset.UtcNow.ToUnixTimeSeconds()
+                );
+            }
+
+            // Fallback to Yahoo Finance scraping
             var response = await _httpClient.GetFromJsonAsync<PythonStockResponse>(
                 $"{_pythonServiceUrl}/stock/{symbol}",
                 cancellationToken: default);
@@ -81,6 +104,18 @@ public class FinnhubStockPriceService : IStockPriceService
     private record PythonStockResponse(
         [property: JsonPropertyName("symbol")] string Symbol,
         [property: JsonPropertyName("price")] double? Price,
+        [property: JsonPropertyName("status")] string Status,
+        [property: JsonPropertyName("message")] string? Message
+    );
+
+    private record MarketStackResponse(
+        [property: JsonPropertyName("symbol")] string Symbol,
+        [property: JsonPropertyName("price")] double? Price,
+        [property: JsonPropertyName("open")] double? Open,
+        [property: JsonPropertyName("high")] double? High,
+        [property: JsonPropertyName("low")] double? Low,
+        [property: JsonPropertyName("volume")] double? Volume,
+        [property: JsonPropertyName("date")] string? Date,
         [property: JsonPropertyName("status")] string Status,
         [property: JsonPropertyName("message")] string? Message
     );

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Stockr.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f4516d0c8280aeb5e243ae359482d0d31d7cdb31")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ccd2100eeb83e425911493553d1ed4513d645768")]
 [assembly: System.Reflection.AssemblyProductAttribute("Stockr.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Stockr.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

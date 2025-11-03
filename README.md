@@ -94,7 +94,11 @@ make run-frontend
 ```bash
 make backend-restore      # Restore .NET dependencies
 make frontend-install     # Install npm packages
+make kill-ports           # Kill all running services (ports 8000, 5100, 4200)
+make run-all              # Kill ports and start all services at once
 ```
+
+**Note:** All `run-*` commands automatically kill any existing processes on their respective ports before starting.
 
 ---
 
@@ -148,12 +152,12 @@ STOCKR/
 - Responsive dashboard UI
 - Modern dark theme
 - Swagger API documentation
-- **Real-time stock price quotes** (Python AI service → .NET backend → Angular frontend)
+- **Real-time stock price quotes** (MarketStack API + Yahoo Finance scraping → .NET backend → Angular frontend)
 - **Auto-refreshing watchlist** (15-second intervals)
-- **Full-stack integration** (Python BeautifulSoup → .NET API → Angular UI)
+- **Full-stack integration** (Python → .NET API → Angular UI)
+- **Real-time news aggregation** (TheNewsAPI → Python → Angular frontend)
 
 ### 🔨 In Development
-- Real-time news aggregation
 - AI sentiment analysis
 - Stock watchlist management
 - Sentiment visualization charts
@@ -192,8 +196,15 @@ npm test
 | GET | `/swagger` | API documentation |
 | GET | `/api/stock/{symbol}` | Get real-time quote for single stock |
 | GET | `/api/stock/multiple?symbols=AAPL,NVDA` | Get real-time quotes for multiple stocks |
+| GET | `/api/news?limit=20` | Get latest financial news articles |
 
-More endpoints coming soon...
+**Python AI Service Endpoints:**
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/health` | Health check |
+| GET | `/stock/{symbol}` | Scrape real-time stock price (Yahoo Finance) |
+| GET | `/stock-marketstack/{symbol}` | Get stock price via MarketStack API |
+| GET | `/news?limit=20` | Get latest financial news via TheNewsAPI |
 
 ---
 
