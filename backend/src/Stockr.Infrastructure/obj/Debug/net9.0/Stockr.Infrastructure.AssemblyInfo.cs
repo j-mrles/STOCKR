@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Stockr.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+136d0577a7fc94fc387e19dacb58e14486b65b83")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+626c336274bdb7d72ac89e725f91a9d6741ac436")]
 [assembly: System.Reflection.AssemblyProductAttribute("Stockr.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Stockr.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

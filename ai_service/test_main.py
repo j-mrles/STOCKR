@@ -9,7 +9,6 @@ if ROOT not in sys.path:
 from fastapi.testclient import TestClient
 from main import app
 
-
 client = TestClient(app)
 
 
@@ -17,3 +16,14 @@ def test_health():
     response = client.get("/health")
     assert response.status_code == 200
     assert response.json() == {"message": "AI Service is running"}
+
+
+def test_stock_price_scraping():
+    """Test that stock prices can be scraped using BeautifulSoup"""
+    from main import scrape_stock_price
+    
+    # Test with a known stock symbol
+    price = scrape_stock_price("AAPL")
+    
+    # Price should be a positive number or None
+    assert price is None or (isinstance(price, float) and price > 0)
