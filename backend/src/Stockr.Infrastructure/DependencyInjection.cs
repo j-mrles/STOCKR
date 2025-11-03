@@ -12,8 +12,9 @@ public static class DependencyInjection
     {
         services.AddScoped<IUserCredentialValidator, HardCodedCredentialValidator>();
         
-        // Add HttpClient for stock price service
+        // Add HttpClient for stock price service and general HTTP calls
         services.AddHttpClient<IStockPriceService, FinnhubStockPriceService>();
+        services.AddHttpClient();
 
         return services;
     }
