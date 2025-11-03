@@ -161,7 +161,7 @@ def scrape_latest_news(limit: int = 20) -> list[dict]:
 @app.get("/news")
 def get_latest_news(limit: int = 20):
     """
-    Get latest market news from Yahoo Finance.
+    Get latest market news from TheNewsAPI.
     
     Args:
         limit: Maximum number of news items to return (default: 20)
@@ -175,4 +175,81 @@ def get_latest_news(limit: int = 20):
         "status": "success",
         "count": len(news_items),
         "articles": news_items
+    }
+
+
+def get_stock_price_from_marketstack(symbol: str) -> dict | None:
+    """
+    Get stock price from MarketStack API.
+    
+    Args:
+        symbol: Stock ticker symbol (e.g., 'AAPL', 'NVDA')
+        
+    Returns:
+        Dictionary with stock data or None if failed
+    """
+    try:
+        api_key = "78f80408061373d9936046aee69ada20"
+        url = "http://api.marketstack.com/v1/eod/latest"
+        
+        params = {
+            "access_key": api_key,
+            "symbols": symbol.upper(),
+            "limit": 1
+        }
+        
+        response = requests.get(url, params=params, timeout=15)
+        response.raise_for_status()
+        
+        data = response.json()
+        
+        if 'data' in data and isinstance(data['data'], list) and len(data['data']) > 0:
+            stock_data = data['data'][0]
+            return {
+                "symbol": symbol.upper(),
+                "price": stock_data.get('close'),
+                "open": stock_data.get('open'),
+                "high": stock_data.get('high'),
+                "low": stock_data.get('low'),
+                "volume": stock_data.get('volume'),
+                "date": stock_data.get('date')
+            }
+        
+        return None
+        
+    except Exception as e:
+        print(f"Error fetching stock price from MarketStack for {symbol}: {e}")
+        return None
+
+
+@app.get("/stock-marketstack/{symbol}")
+def get_stock_price_marketstack(symbol: str):
+    """
+    Get stock price from MarketStack API.
+    
+    Args:
+        symbol: Stock ticker symbol
+        
+    Returns:
+        JSON with stock data
+    """
+    stock_data = get_stock_price_from_marketstack(symbol)
+    
+    if stock_data is None:
+        return {
+            "symbol": symbol.upper(),
+            "price": None,
+            "status": "error",
+            "message": "Could not retrieve stock price from MarketStack"
+        }
+    
+    return {
+        "symbol": symbol.upper(),
+        "price": stock_data['price'],
+        "open": stock_data['open'],
+        "high": stock_data['high'],
+        "low": stock_data['low'],
+        "volume": stock_data['volume'],
+        "date": stock_data['date'],
+        "status": "success"
     }
