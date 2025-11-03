@@ -174,6 +174,211 @@
   color: var(--color-text-muted);
 }
 
+// Modal styles
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content {
+  background: linear-gradient(135deg, rgba(6, 9, 11, 0.98), rgba(11, 17, 20, 0.98));
+  border: 1px solid rgba(0, 255, 128, 0.2);
+  border-radius: 1rem;
+  box-shadow: 0 32px 60px rgba(0, 0, 0, 0.75);
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(0, 255, 128, 0.1);
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--color-text-primary);
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close:hover {
+  color: var(--color-accent);
+}
+
+.modal-body {
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.current-list,
+.add-section {
+  margin-bottom: 2rem;
+}
+
+.current-list h3,
+.add-section h3 {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.watchlist-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.watchlist-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 255, 128, 0.05);
+  border: 1px solid rgba(0, 255, 128, 0.1);
+  border-radius: 0.5rem;
+  transition: background 0.2s ease;
+}
+
+.watchlist-item:hover {
+  background: rgba(0, 255, 128, 0.1);
+}
+
+.item-symbol {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-text-primary);
+  min-width: 80px;
+}
+
+.item-company {
+  flex: 1;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.remove-btn {
+  background: transparent;
+  border: 1px solid #ff6a8a;
+  color: #ff6a8a;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.remove-btn:hover {
+  background: #ff6a8a;
+  color: white;
+}
+
+.search-wrapper {
+  position: relative;
+}
+
+.modal-search {
+  width: 100%;
+  background: rgba(0, 255, 128, 0.1);
+  border: 1px solid rgba(0, 255, 128, 0.3);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: var(--color-text-primary);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.modal-search:focus {
+  border-color: var(--color-accent);
+  background: rgba(0, 255, 128, 0.15);
+}
+
+.modal-search::placeholder {
+  color: var(--color-text-muted);
+}
+
+.modal-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 0.5rem;
+  background: rgba(6, 9, 11, 0.98);
+  border: 1px solid rgba(0, 255, 128, 0.2);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.result-item {
+  padding: 0.75rem 1rem;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: background 0.2s ease;
+  border-bottom: 1px solid rgba(0, 255, 128, 0.05);
+}
+
+.result-item:last-child {
+  border-bottom: none;
+}
+
+.result-item:hover {
+  background: rgba(0, 255, 128, 0.1);
+  color: var(--color-accent);
+}
+
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
@@ -183,6 +388,15 @@
   .cta {
     width: 100%;
     text-align: center;
+  }
+
+  .modal-content {
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  .modal-body {
+    padding: 1.5rem;
   }
 }
 

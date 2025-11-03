@@ -7,7 +7,7 @@
         actionable sentiment insights.
       </p>
     </div>
-    <button class="cta">Configure Watchlist</button>
+    <button class="cta" (click)="openConfigureModal()">Configure Watchlist</button>
   </header>
 
   <section class="stats-grid">
@@ -54,5 +54,52 @@
     </div>
   </section>
 </section>
+
+<!-- Configure Watchlist Modal -->
+<div class="modal-overlay" *ngIf="isModalOpen()" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>Configure Watchlist</h2>
+      <button class="modal-close" (click)="closeModal()">×</button>
+    </div>
+    
+    <div class="modal-body">
+      <!-- Current Watchlist -->
+      <div class="current-list">
+        <h3>Current Watchlist ({{ trendSnapshots().length }})</h3>
+        <div class="watchlist-items">
+          <div class="watchlist-item" *ngFor="let stock of trendSnapshots()">
+            <span class="item-symbol">{{ stock.symbol }}</span>
+            <span class="item-company">{{ stock.company }}</span>
+            <button class="remove-btn" (click)="removeFromWatchlist(stock.symbol)">Remove</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search to Add -->
+      <div class="add-section">
+        <h3>Add Stock to Watchlist</h3>
+        <div class="search-wrapper">
+          <input
+            type="text"
+            class="modal-search"
+            placeholder="Search stocks..."
+            [value]="modalSearchQuery()"
+            (input)="onModalSearchInput($any($event.target).value)"
+          />
+          <div class="modal-results" *ngIf="modalSearchResults().length > 0">
+            <div
+              class="result-item"
+              *ngFor="let symbol of modalSearchResults()"
+              (click)="addStockToWatchlist(symbol)"
+            >
+              {{ symbol }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 

@@ -1,13 +1,12 @@
 import { NgFor, NgIf, NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, computed, signal } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { FormsModule } from '@angular/forms';
 import { AuthService } from './core/auth/auth.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, NgFor, NgIf, NgClass, FormsModule],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, NgFor, NgIf, NgClass],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -22,9 +21,9 @@ export class AppComponent {
     if (this.isAuthenticated()) {
       return [
         { label: 'Home', path: '/home' },
-        { label: 'Test', path: '/test1' },
-        { label: 'Test', path: '/test2' },
-        { label: 'Test', path: '/test3' }
+        { label: 'Analytics', path: '/analytics' },
+        { label: 'News', path: '/news' },
+        { label: 'Portfolio', path: '/portfolio' }
       ];
     }
     return [{ label: 'Login', path: '/login' }];
