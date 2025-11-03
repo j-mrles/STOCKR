@@ -8,6 +8,35 @@
         routerLinkActive="active"
         >{{ link.label }}</a
       >
+      
+      <!-- Search Box -->
+      <div class="search-container" *ngIf="isAuthenticated()">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Search stocks..."
+          [value]="searchQuery()"
+          (input)="onSearchInput($any($event.target).value)"
+          (focus)="onSearchClick()"
+          (blur)="onSearchBlur()"
+        />
+        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+        
+        <!-- Search Dropdown -->
+        <div class="search-dropdown" [ngClass]="{ 'open': isSearchOpen() }" *ngIf="isSearchOpen() && searchResults().length > 0">
+          <div
+            class="search-item"
+            *ngFor="let stock of searchResults()"
+            (click)="selectStock(stock)"
+          >
+            {{ stock }}
+          </div>
+        </div>
+      </div>
+      
       <button *ngIf="isAuthenticated()" class="logout-btn" (click)="logout()">Logout</button>
     </nav>
   </header>
