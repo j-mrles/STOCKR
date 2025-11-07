@@ -1,0 +1,13 @@
+Your Local IP: 192.168.1.59
+
+📱 Access STOCKR on your phone:
+   http://192.168.1.59:4200
+
+🔧 Test endpoints:
+   Frontend: http://192.168.1.59:4200
+   Backend:  http://192.168.1.59:5100/swagger
+   Python:   http://192.168.1.59:8000/health
+
+To start:
+   make run-network
+

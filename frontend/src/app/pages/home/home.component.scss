@@ -1,6 +1,14 @@
 .home-wrapper {
   display: grid;
   gap: 2.5rem;
+  
+  @media (max-width: 768px) {
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 1.25rem;
+  }
 }
 
 .hero {
@@ -13,6 +21,20 @@
   background: linear-gradient(135deg, rgba(0, 255, 128, 0.22), rgba(0, 64, 32, 0.65));
   border: 1px solid rgba(0, 255, 128, 0.25);
   box-shadow: 0 32px 60px rgba(0, 0, 0, 0.55);
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem;
+    gap: 1.5rem;
+    border-radius: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1.25rem;
+    gap: 1.25rem;
+    border-radius: 0.875rem;
+  }
 }
 
 .titles h1 {
@@ -26,6 +48,16 @@
   color: rgba(255, 255, 255, 0.72);
   max-width: 540px;
   line-height: 1.5;
+  
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
 }
 
 .cta {
@@ -40,6 +72,28 @@
   box-shadow: 0 18px 38px rgba(0, 255, 128, 0.32);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-height: 48px;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1rem 1.25rem;
+    font-size: 0.85rem;
+  }
+  
+  // Touch feedback
+  @media (hover: none) and (pointer: coarse) {
+    &:active {
+      transform: scale(0.97);
+    }
+  }
 }
 
 .cta:hover {
@@ -51,6 +105,16 @@
   display: grid;
   gap: 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 0.875rem;
+  }
 }
 
 .stat-card {
@@ -59,6 +123,16 @@
   background: rgba(6, 9, 11, 0.9);
   border: 1px solid rgba(0, 255, 128, 0.12);
   box-shadow: inset 0 0 0 1px rgba(0, 255, 128, 0.06);
+  
+  @media (max-width: 768px) {
+    padding: 1.25rem;
+    border-radius: 0.875rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1rem;
+    border-radius: 0.75rem;
+  }
 }
 
 .stat-label {
@@ -75,6 +149,15 @@
   font-size: 2rem;
   font-weight: 700;
   color: var(--color-accent);
+  
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+    margin-top: 0.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+  }
 }
 
 .stat-meta {
@@ -93,6 +176,16 @@
   display: grid;
   gap: 1.75rem;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.25rem;
+  }
+  
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
 
 .trend-card {
@@ -103,6 +196,18 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  
+  @media (max-width: 768px) {
+    padding: 1.25rem;
+    gap: 0.875rem;
+    border-radius: 0.875rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1rem;
+    gap: 0.75rem;
+    border-radius: 0.75rem;
+  }
 }
 
 .trend-header {
@@ -115,6 +220,14 @@
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--color-text-primary);
+  
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+  }
 }
 
 .company {
@@ -133,6 +246,14 @@
   font-weight: 600;
   color: var(--color-text-primary);
   letter-spacing: 0.02rem;
+  
+  @media (max-width: 768px) {
+    font-size: 1.35rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.25rem;
+  }
 }
 
 .score {
@@ -144,6 +265,14 @@
   font-size: 2rem;
   font-weight: 700;
   color: var(--color-text-primary);
+  
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+  }
 }
 
 .score-label {
@@ -206,6 +335,21 @@
   display: flex;
   flex-direction: column;
   animation: slideUp 0.3s ease;
+  
+  @media (max-width: 768px) {
+    width: 95%;
+    max-width: none;
+    max-height: 90vh;
+    border-radius: 0.875rem;
+    margin: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    width: 100%;
+    max-height: 95vh;
+    border-radius: 0.75rem;
+    margin: 0.5rem;
+  }
 }
 
 @keyframes slideUp {
@@ -225,6 +369,14 @@
   justify-content: space-between;
   padding: 1.5rem 2rem;
   border-bottom: 1px solid rgba(0, 255, 128, 0.1);
+  
+  @media (max-width: 768px) {
+    padding: 1.25rem 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1rem 1.25rem;
+  }
 }
 
 .modal-header h2 {
@@ -242,11 +394,17 @@
   cursor: pointer;
   transition: color 0.2s ease;
   padding: 0;
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
+  
+  @media (max-width: 480px) {
+    width: 48px;
+    height: 48px;
+    font-size: 1.75rem;
+  }
 }
 
 .modal-close:hover {
@@ -256,6 +414,15 @@
 .modal-body {
   padding: 2rem;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1.25rem;
+  }
 }
 
 .current-list,
@@ -315,6 +482,14 @@
   cursor: pointer;
   font-size: 0.85rem;
   transition: all 0.2s ease;
+  min-height: 44px;
+  min-width: 44px;
+  
+  @media (max-width: 768px) {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    min-height: 48px;
+  }
 }
 
 .remove-btn:hover {
@@ -380,23 +555,35 @@
 }
 
 @media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    align-items: flex-start;
+  .trend-section h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
   }
-
-  .cta {
-    width: 100%;
-    text-align: center;
+  
+  .stat-label {
+    font-size: 0.8rem;
   }
-
-  .modal-content {
-    width: 95%;
-    max-height: 90vh;
+  
+  .stat-meta {
+    font-size: 0.85rem;
   }
+  
+  .company {
+    font-size: 0.9rem;
+  }
+  
+  .change {
+    font-size: 1rem;
+  }
+  
+  .change small {
+    font-size: 0.7rem;
+  }
+}
 
-  .modal-body {
-    padding: 1.5rem;
+@media (max-width: 480px) {
+  .trend-section h2 {
+    font-size: 1.1rem;
   }
 }
 
